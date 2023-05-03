@@ -4,7 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ResourceBundle;
+
 public class LoginPage extends PageConnection{
+
     public LoginPage(WebDriver driver) {
         super(driver);
     }
@@ -22,8 +25,21 @@ public class LoginPage extends PageConnection{
     @FindBy(xpath = "//*[@id=\"loginPanel\"]/form/div[3]/input")
     public WebElement loginButton;
 
+    @FindBy(xpath = "//*[@id=\"leftPanel\"]/h2")
+    public WebElement loginBoxTitle;
+
     /**
      * Action Methods:
      * This section will contain the Commonly used actions
      */
+
+    /**
+     * This method contains valid username and password for bypassing
+     * login step when it is necessary.
+     */
+    public void loginExpress(){
+        usernameBox.sendKeys("test123");
+        passwordBox.sendKeys("test123");
+        loginButton.click();
+    }
 }

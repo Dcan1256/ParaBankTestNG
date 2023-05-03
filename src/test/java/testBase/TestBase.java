@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 
 public class TestBase {
     public static WebDriver driver;
-    public ResourceBundle config;
+    public static ResourceBundle config;
 
     /**
      * This method will set up web browser for us depending on the

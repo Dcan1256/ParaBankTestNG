@@ -16,6 +16,12 @@ public class MainPage extends PageConnection{
     @FindBy(xpath = "//*[@id=\"leftPanel\"]/h2")
     public WebElement mainMenuTitle;
 
+    @FindBy(xpath = "//*[@id=\"leftPanel\"]/ul/li[8]/a")
+    public WebElement logoutButton;
+
+    @FindBy(xpath = "//*[@id=\"leftPanel\"]/ul/li[1]/a")
+    public WebElement openNewAccountButton;
+
     /**
      * Action Methods:
      * This section will contain the Commonly used actions
