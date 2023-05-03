@@ -18,15 +18,14 @@ public class ExtentReportManager implements ITestListener {
     public ExtentSparkReporter sparkReporter;
     public ExtentReports extent;
     public ExtentTest test;
+
     String repName;
 
-    public void onStart(ITestListener testContext){
-        //time stamp
-        String timeStamp=new SimpleDateFormat("yyy.MM.dd.HH.mm.ss").format(new Date());
-        repName="Test-Report-"+timeStamp+".html";
+    public void onStart(ITestContext testContext) {
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());// time stamp
+        repName = "Test-Report-" + timeStamp + ".html";
 
-        // specify the location of Reports
-        sparkReporter = new ExtentSparkReporter(".\\reports\\" + repName);// specify location of the report
+        sparkReporter = new ExtentSparkReporter(".\\Reports\\" + repName);// specify location of the report
 
         sparkReporter.config().setDocumentTitle("ParaBankTestNG Automation Report"); // Title of report
         sparkReporter.config().setReportName("ParaBankTestNG Functional Testing"); // name of the report
@@ -68,5 +67,7 @@ public class ExtentReportManager implements ITestListener {
 
     public void onFinish(ITestContext testContext) {
         extent.flush();
+
     }
+
 }

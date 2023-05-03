@@ -10,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,17 +28,17 @@ public class TestBase {
      * type of browser and Url address provided by the user before each method
      */
     @BeforeMethod
-    public void setUp(){
+    @Parameters("browser")
+    public void setUp(String browser){
         config=ResourceBundle.getBundle("config");
-        String browser="chrome"; // you will make reading that info from .xml file later.
 
-        if(browser.toLowerCase().equals("chrome")){
+        if(browser.equalsIgnoreCase("chrome")){
             driver=new ChromeDriver();
         }
-        else if (browser.toLowerCase().equals("edge")) {
+        else if (browser.equalsIgnoreCase("edge")) {
             driver = new EdgeDriver();
         }
-        else if(browser.toLowerCase().equals("firefox")){
+        else if(browser.equalsIgnoreCase("firefox")){
             driver=new FirefoxDriver();
         }
         else{
@@ -61,7 +62,7 @@ public class TestBase {
         String timeStamp= new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
         TakesScreenshot takesScreenshot=(TakesScreenshot)driver;
         File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
-        String destination= System.getProperty("user.dir")+"\\screenshots\\"+tname+"_"+timeStamp+".png";
+        String destination= System.getProperty("user.dir")+"\\Screenshots\\"+tname+"_"+timeStamp+".png";
 
         try {
             FileUtils.copyFile(source, new File(destination));
