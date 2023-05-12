@@ -28,6 +28,9 @@ public class LoginPage extends PageConnection{
     @FindBy(xpath = "//*[@id=\"leftPanel\"]/h2")
     public WebElement loginBoxTitle;
 
+    @FindBy(xpath = "//*[@id=\"loginPanel\"]/p[2]/a")
+    public WebElement registerLink;
+
     /**
      * Action Methods:
      * This section will contain the Commonly used actions
